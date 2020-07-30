@@ -9,7 +9,8 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 export class LoginPageComponent implements OnInit {
 
   loginForms: FormGroup;
-   submitted: boolean = false;
+  submitted: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -20,7 +21,8 @@ export class LoginPageComponent implements OnInit {
     this.submitted = true; 
   }
 
-  get f() { return this.loginForms.controls; }
+  get f() { 
+    return this.loginForms.controls; }
 
   submitForm() {
     this.loginForms = new FormGroup({

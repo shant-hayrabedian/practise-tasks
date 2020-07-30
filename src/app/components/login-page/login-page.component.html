@@ -12,24 +12,25 @@
                 <!-- Validators -->
                 <div *ngIf="submitted && f.email.invalid" class="form-error">
                     <p *ngIf="f.email.errors.required" class="alert alert-danger">
-                      Email is required!
+                        Email is required!
                     </p>
                     <p *ngIf="f.email.errors.minlength" class="alert alert-danger">
-                      Email should be more than 6
+                        Email should be more than 6
                     </p>
                     <p *ngIf="f.email.errors.maxlength" class="alert alert-danger">
-                      Email should be less then 20
+                        Email should be less then 20
                     </p>
-                  </div>
+                </div>
                 <br>
                 <mat-form-field class="example-full-width">
                     <mat-label>Password:</mat-label><br>
-                    <input matInput type="password" placeholder="Put Your Password Please" required formControlName="password">
+                    <input matInput type="password" placeholder="Put Your Password Please" required
+                        formControlName="password">
                 </mat-form-field>
                 <!-- Validators -->
                 <div *ngIf="submitted && f.password.invalid" class="form-error">
                     <p *ngIf="f.password.errors.required" class="alert alert-danger">
-                      Password is required!
+                        Password is required!
                     </p>
                     <p *ngIf="f.password.errors.minlength" class="alert alert-danger">
                         Password should be more than 6
@@ -37,9 +38,9 @@
                     <p *ngIf="f.password.errors.maxlength" class="alert alert-danger">
                         Password should be less then 20
                     </p>
-                  </div>
+                </div>
                 <br>
-                <input type="submit" class="mdc-button--raised"><br><br>
+                <input type="submit" class="mdc-fab mdc-fab--extended"><br><br>
             </form>
         </div>
     </div>

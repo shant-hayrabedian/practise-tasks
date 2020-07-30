@@ -23,6 +23,7 @@
     "@angular/router": "~9.1.0",
     "@material/button": "^7.0.0",
     "@material/card": "^7.0.0",
+    "@material/fab": "^7.0.0",
     "@material/textfield": "^7.0.0",
     "bootstrap": "^4.5.0",
     "rxjs": "~6.5.4",
