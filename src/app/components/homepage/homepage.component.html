@@ -5,8 +5,8 @@
 
   <div class="collapse navbar-collapse pull-right" id="navbarSupportedContent">
     <form class="form-inline my-2 my-lg-1">
-      <button class="btn btn-outline-primary" id="loginButton" type="submit">Login</button>
-      <button class="btn btn-outline-success" id="registerButton" type="submit">Register</button>    
+      <a [routerLink]="['/login']" class="btn btn-outline-primary" id="loginButton" type="submit">Login</a>
+      <a [routerLink]="['/register']" class="btn btn-outline-success" id="registerButton" type="submit">Register</a>    
     </form>
   </div>
 </nav>
