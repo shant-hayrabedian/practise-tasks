@@ -1,0 +1,78 @@
+<br>
+<div class="container">
+    <div class="mdc-card">
+        <h1 class="text-center">Please Register Here</h1>
+        <!-- Inputs -->
+        <div class="container">
+            <form class="example-form" [formGroup]="registerForms" (ngSubmit)="register()">
+                <mat-form-field class="example-full-width">
+                    <mat-label>First Name:</mat-label><br>
+                    <input matInput type="type" placeholder="Put Your First Name" required formControlName="firstName">
+                </mat-form-field>
+                <!-- Validators -->
+                <div *ngIf="submitted && f.firstName.invalid" class="form-error">
+                    <p *ngIf="f.firstName.errors.required" class="alert alert-danger">
+                        First Name is required!
+                    </p>
+                    <p *ngIf="f.firstName.errors.minlength" class="alert alert-danger">
+                        First Name should be more than 3
+                    </p>
+                    <p *ngIf="f.firstName.errors.maxlength" class="alert alert-danger">
+                        First Name should be less then 30
+                    </p>
+                </div>
+                <br>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Last Name:</mat-label><br>
+                    <input matInput type="type" placeholder="Put Your Last Name" required formControlName="lastName">
+                </mat-form-field>
+                <!-- Validators -->
+                <div *ngIf="submitted && f.lastName.invalid" class="form-error">
+                    <p *ngIf="f.lastName.errors.required" class="alert alert-danger">
+                        Last Name is required!
+                    </p>
+                    <p *ngIf="f.lastName.errors.minlength" class="alert alert-danger">
+                        Last Name should be more than 3
+                    </p>
+                    <p *ngIf="f.lastName.errors.maxlength" class="alert alert-danger">
+                        Last Name should be less then 30
+                    </p>
+                </div>
+                <br>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email:</mat-label><br>
+                    <input matInput type="email" placeholder="Put Your Email" required formControlName="email">
+                </mat-form-field>
+                <!-- Validators -->
+                <div *ngIf="submitted && f.email.invalid" class="form-error">
+                    <p *ngIf="f.email.errors.required" class="alert alert-danger">
+                        Email is required!
+                    </p>
+                    <p *ngIf="f.email.errors.minlength" class="alert alert-danger">
+                        Email should be more than 6
+                    </p>
+                    <p *ngIf="f.email.errors.maxlength" class="alert alert-danger">
+                        Email should be less then 20
+                    </p>
+                </div>
+                <br>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Password:</mat-label><br>
+                    <input matInput type="password" placeholder="Put Your Password" required formControlName="password">
+                </mat-form-field>
+                <!-- Validators -->
+                <div *ngIf="submitted && f.password.invalid" class="form-error">
+                    <p *ngIf="f.password.errors.required" class="alert alert-danger">
+                        Password is required!
+                    </p>
+                    <p *ngIf="f.password.errors.minlength" class="alert alert-danger">
+                        Password should be more than 6
+                    </p>
+                    <p *ngIf="f.password.errors.maxlength" class="alert alert-danger">
+                        Password should be less then 10
+                    </p>
+                </div><br>
+                <input type="submit" class="mdc-fab mdc-fab--extended"><br><br>
+            </form>
+        </div>
+    </div>
