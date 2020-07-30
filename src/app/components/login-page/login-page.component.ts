@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login-page',
@@ -11,10 +12,13 @@ export class LoginPageComponent implements OnInit {
   loginForms: FormGroup;
   submitted: boolean = false;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.submitForm();
+    this.userService.getUsers().subscribe(users => {
+      console.log(users)
+    })
   }
 
   login() {
