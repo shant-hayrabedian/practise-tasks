@@ -24,10 +24,10 @@ export class LoginPageComponent implements OnInit {
   submitForm() {
     this.loginForms = new FormGroup({
       email: new FormControl(null, [
-        Validators.minLength(6), Validators.maxLength(20),
+        Validators.required, Validators.minLength(6), Validators.maxLength(20),
       ]),
       password: new FormControl(null, [
-        Validators.minLength(6), Validators.maxLength(10),
+        Validators.required, Validators.minLength(6), Validators.maxLength(10),
       ]),
     })
     

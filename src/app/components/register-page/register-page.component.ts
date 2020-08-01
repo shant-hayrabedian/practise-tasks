@@ -28,16 +28,16 @@ export class RegisterPageComponent implements OnInit {
   submitForm() {
     this.registerForms = new FormGroup({
       firstName: new FormControl(null, [
-        Validators.minLength(3), Validators.maxLength(30),
+        Validators.required, Validators.minLength(3), Validators.maxLength(30),
       ]),
       lastName: new FormControl(null, [
-        Validators.minLength(3), Validators.maxLength(30),
+        Validators.required, Validators.minLength(3), Validators.maxLength(30),
       ]),
       email: new FormControl(null, [
-        Validators.minLength(6), Validators.maxLength(20),
+        Validators.required, Validators.minLength(6), Validators.maxLength(20),
       ]),
       password: new FormControl(null, [
-        Validators.minLength(6), Validators.maxLength(10),
+        Validators.required, Validators.minLength(6), Validators.maxLength(10),
       ]),
     })
   }
