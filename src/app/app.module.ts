@@ -10,6 +10,8 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TasksComponent } from './components/tasks/tasks.component';
 // import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
@@ -17,7 +19,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     HomepageComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    DashboardComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
