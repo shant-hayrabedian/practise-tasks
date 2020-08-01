@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -11,14 +12,10 @@ export class LoginPageComponent implements OnInit {
   loginForms: FormGroup;
   submitted: boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.submitForm();
-  }
-
-  login() {
-    this.submitted = true; 
   }
 
   get f() { 
@@ -33,6 +30,15 @@ export class LoginPageComponent implements OnInit {
         Validators.minLength(6), Validators.maxLength(10),
       ]),
     })
+    
+  }
+
+  login() {
+    if(this.loginForms.invalid) {
+     return this.submitted = true;
+    } else {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
 }
