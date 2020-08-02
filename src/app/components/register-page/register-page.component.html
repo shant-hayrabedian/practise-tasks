@@ -77,10 +77,11 @@
                     </p>
                 </div><br>
                 <input type="submit" class="mdc-fab mdc-fab--extended"><br><br>
-                <div>
-                    <p *ngIf="registered" class="alert alert-primary">
+                <div *ngIf="registered">
+                    <p class="alert alert-primary">
                         Congratulations You Are Registered
-                    </p> 
+                    </p>
+                    <a [routerLink]="['/login']" routerLinkActive="active" class="btn btn-outline-primary" type="submit">Click Here To Login</a> 
                 </div>
             </form>
         </div>
