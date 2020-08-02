@@ -25,7 +25,9 @@
     "@material/card": "^7.0.0",
     "@material/fab": "^7.0.0",
     "@material/textfield": "^7.0.0",
+    "angularfire2": "^5.4.2",
     "bootstrap": "^4.5.0",
+    "firebase": "^7.17.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

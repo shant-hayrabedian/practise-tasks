@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,10 +13,14 @@ export class LoginPageComponent implements OnInit {
   loginForms: FormGroup;
   submitted: boolean = false;
 
+  constructor(private userService: UserService) { }
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.submitForm();
+    this.userService.getUsers().subscribe(users => {
+      console.log(users)
+    })
   }
 
   get f() { 
@@ -30,7 +35,7 @@ export class LoginPageComponent implements OnInit {
         Validators.required, Validators.minLength(6), Validators.maxLength(10),
       ]),
     })
-    
+
   }
 
   login() {
