@@ -8,7 +8,7 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>First Name:</mat-label><br>
                     <input matInput type="type" placeholder="Put Your First Name" required formControlName="firstName"
-                    [(ngModel)]=user.firstName>
+                    [(ngModel)]= "user.firstName">
                 </mat-form-field>
                 <!-- Validators -->
                 <div *ngIf="submitted && f.firstName.invalid" class="form-error">
@@ -26,7 +26,7 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Last Name:</mat-label><br>
                     <input matInput type="type" placeholder="Put Your Last Name" required formControlName="lastName"
-                    [(ngModel)]=user.lastName>
+                    [(ngModel)]= "user.lastName">
                 </mat-form-field>
                 <!-- Validators -->
                 <div *ngIf="submitted && f.lastName.invalid" class="form-error">
@@ -44,7 +44,7 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Email:</mat-label><br>
                     <input matInput type="email" placeholder="Put Your Email" required formControlName="email"
-                    [(ngModel)]=user.email>
+                    [(ngModel)]= "user.email">
                 </mat-form-field>
                 <!-- Validators -->
                 <div *ngIf="submitted && f.email.invalid" class="form-error">
@@ -62,7 +62,7 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Password:</mat-label><br>
                     <input matInput type="password" placeholder="Put Your Password" required formControlName="password"
-                    [(ngModel)]=user.password>
+                    [(ngModel)]= "user.password">
                 </mat-form-field>
                 <!-- Validators -->
                 <div *ngIf="submitted && f.password.invalid" class="form-error">

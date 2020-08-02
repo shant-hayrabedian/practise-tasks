@@ -16,10 +16,6 @@ export class UserService {
     this.users = this.usersCollection.valueChanges();
    }
 
-   getUsers() {
-     return this.users;
-   }
-
    addUser(user) {
     this.usersCollection.add(user);
    }

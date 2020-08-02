@@ -14,15 +14,16 @@ export class LoginPageComponent implements OnInit {
   loginForms: FormGroup;
   submitted: boolean = false;
   users: User[];
+  user: User = {
+    email: '',
+    password: ''
+  };
 
   constructor(private userService: UserService, 
               private router: Router) { }
 
   ngOnInit(): void {
     this.submitForm();
-    this.userService.getUsers().subscribe(users => {
-      this.users = users;
-    })
   }
 
   get f() { 
@@ -43,8 +44,11 @@ export class LoginPageComponent implements OnInit {
   login() {
     if(this.loginForms.invalid) {
      return this.submitted = true;
-    } else {
+    } else if(this.user.email == 'shant@gmail.com' && this.user.password == 'shantshant') {
       this.router.navigate(['/dashboard']);
+    }
+    else {
+      this.router.navigate(['/tasks']);
     }
   }
 
