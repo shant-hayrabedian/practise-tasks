@@ -14,13 +14,18 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { UserService } from './services/user.service';
 
 
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TasksComponent } from './components/tasks/tasks.component';
+// import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    DashboardComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
