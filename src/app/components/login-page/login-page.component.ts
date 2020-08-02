@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { User} from 'src/app/models/User';
 
 @Component({
   selector: 'app-login-page',
@@ -12,6 +13,7 @@ export class LoginPageComponent implements OnInit {
 
   loginForms: FormGroup;
   submitted: boolean = false;
+  users: User[];
 
   constructor(private userService: UserService, 
               private router: Router) { }
@@ -19,7 +21,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
     this.submitForm();
     this.userService.getUsers().subscribe(users => {
-      console.log(users)
+      this.users = users;
     })
   }
 

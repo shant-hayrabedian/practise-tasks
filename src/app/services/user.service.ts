@@ -8,15 +8,19 @@ import { User} from 'src/app/models/User'
   providedIn: 'root'
 })
 export class UserService {
-  userCollection: AngularFirestoreCollection<User>;
+  usersCollection: AngularFirestoreCollection<User>;
   users:Observable<User[]>;
 
   constructor(public db: AngularFirestore) {
-    this.userCollection = this.db.collection('users');
-    this.users = this.userCollection.valueChanges();
+    this.usersCollection = this.db.collection('users');
+    this.users = this.usersCollection.valueChanges();
    }
 
    getUsers() {
      return this.users;
+   }
+
+   addUser(user) {
+    this.usersCollection.add(user);
    }
 }

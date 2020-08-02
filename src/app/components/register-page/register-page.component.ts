@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { User} from 'src/app/models/User';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register-page',
@@ -10,15 +12,32 @@ export class RegisterPageComponent implements OnInit {
 
   registerForms: FormGroup;
   submitted: boolean = false;
+  registered: boolean = false;
+  user: User = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  };
+  
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.submitForm();
   }
 
   register() {
-    this.submitted = true;
+    if(this.user.firstName != '' && this.user.lastName != '' && this.user.email != '' && this.user.password != '') {
+      this.userService.addUser(this.user)
+      this.registered = true
+      this.user.firstName = '';
+      this.user.lastName = '';
+      this.user.email = '';
+      this.user.password = '';
+      this.submitted = false;
+    } else {
+    this.submitted = true;}
   }
 
   get f() {
