@@ -11,8 +11,8 @@ export class UserService {
   userCollection: AngularFirestoreCollection<User>;
   users:Observable<User[]>;
 
-  constructor(public afs: AngularFirestore) {
-    this.userCollection = this.afs.collection('users');
+  constructor(public db: AngularFirestore) {
+    this.userCollection = this.db.collection('users');
     this.users = this.userCollection.valueChanges();
    }
 

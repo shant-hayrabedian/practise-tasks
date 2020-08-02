@@ -13,8 +13,8 @@ export class LoginPageComponent implements OnInit {
   loginForms: FormGroup;
   submitted: boolean = false;
 
-  constructor(private userService: UserService) { }
-  constructor(private router: Router) { }
+  constructor(private userService: UserService, 
+              private router: Router) { }
 
   ngOnInit(): void {
     this.submitForm();
