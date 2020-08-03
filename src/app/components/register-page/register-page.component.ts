@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { User} from 'src/app/models/User';
+import { User, Role} from 'src/app/models/User';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -17,7 +17,8 @@ export class RegisterPageComponent implements OnInit {
     firstName: '',
     lastName: '',
     email: '',
-    password: ''
+    password: '',
+    role: Role.user
   };
   
 
@@ -58,6 +59,7 @@ export class RegisterPageComponent implements OnInit {
       password: new FormControl(null, [
         Validators.required, Validators.minLength(6), Validators.maxLength(10),
       ]),
+      role: new FormControl(),
     })
   }
 

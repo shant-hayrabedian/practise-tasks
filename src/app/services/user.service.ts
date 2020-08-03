@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs'
-import { from } from 'rxjs';
 import { User} from 'src/app/models/User'
 
 @Injectable({
@@ -19,4 +18,8 @@ export class UserService {
    addUser(user) {
     this.usersCollection.add(user);
    }
+
+  //  getUsers() {
+  //   return this.users
+  //  }
 }
