@@ -12,11 +12,11 @@ import { User, Role} from 'src/app/models/User';
 export class LoginPageComponent implements OnInit {
 
   loginForms: FormGroup;
-  submitted: boolean = false;
+  submitted = false;
   user: User = {
     email: '',
     password: '',
-    role: Role.admin || Role.user
+    role: Role.user && Role.admin
   };
 
   constructor(private userService: UserService,
@@ -39,19 +39,20 @@ export class LoginPageComponent implements OnInit {
       ]),
       role: new FormControl(),
     });
-
   }
-
   login() {
-    if(this.loginForms.invalid) {
+    console.log(this.user.role) 
+    if (this.loginForms.invalid) {
      return this.submitted = true;
-    } else if(this.user.role == Role.admin) {
+    }
+    if (this.user.role == Role.admin) {
+      console.log(this.user.role) 
       this.router.navigate(['/dashboard']);
     }
-    else if(this.user.role == Role.user) {
+    else if (this.user.role == Role.user) {
+      console.log(this.user.role) 
       this.router.navigate(['/tasks']);
     }
-    return true
   }
 
 }
