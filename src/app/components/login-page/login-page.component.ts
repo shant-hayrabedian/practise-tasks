@@ -40,8 +40,7 @@ export class LoginPageComponent implements OnInit {
       role: new FormControl(),
     });
   }
-  login() {
-    console.log(this.user.role) 
+  login() { 
     if (this.loginForms.invalid) {
      return this.submitted = true;
     }
