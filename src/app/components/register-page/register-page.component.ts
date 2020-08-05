@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User, Role} from 'src/app/models/User';
 import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register-page',
@@ -22,23 +23,25 @@ export class RegisterPageComponent implements OnInit {
   };
   
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.submitForm();
   }
 
   register() {
+    this.authService.doRegister(this.user);
     if(this.user.firstName != '' && this.user.lastName != '' && this.user.email != '' && this.user.password != '') {
-      this.userService.addUser(this.user)
-      this.registered = true
+      this.userService.addUser(this.user);
+      this.registered = true;
       this.user.firstName = '';
       this.user.lastName = '';
       this.user.email = '';
       this.user.password = '';
       this.submitted = false;
     } else {
-    this.submitted = true;}
+    this.submitted = true;
+    this.registered = false;}
   }
 
   get f() {

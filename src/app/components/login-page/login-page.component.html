@@ -37,11 +37,16 @@
                         Password should be more than 6
                     </p>
                     <p *ngIf="f.password.errors.maxlength" class="alert alert-danger">
-                        Password should be less then 20
+                        Password should be less then 10
                     </p>
                 </div>
                 <br>
                 <input type="submit" class="mdc-fab mdc-fab--extended"><br><br>
+                <div *ngIf="notLogined" class="alert alert-danger">
+                    <p>
+                       Wrong Email And Password Please try Again! 
+                    </p>
+                </div>
             </form>
         </div>
     </div>

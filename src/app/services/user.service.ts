@@ -12,8 +12,6 @@ export class UserService {
 
   constructor(public db: AngularFirestore) {
     this.usersCollection = this.db.collection('users');
-    this.users = this.usersCollection.valueChanges();
-
    }
 
    addUser(user) {

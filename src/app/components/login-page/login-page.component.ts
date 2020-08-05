@@ -3,6 +3,7 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { User, Role} from 'src/app/models/User';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -13,6 +14,7 @@ export class LoginPageComponent implements OnInit {
 
   loginForms: FormGroup;
   submitted = false;
+  notLogined = false;
   user: User = {
     email: '',
     password: '',
@@ -20,6 +22,7 @@ export class LoginPageComponent implements OnInit {
   };
 
   constructor(private userService: UserService,
+              private authService: AuthService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -41,17 +44,21 @@ export class LoginPageComponent implements OnInit {
     });
   }
   login() { 
+    this.authService.login(this.user.email, this.user.password)
     if (this.loginForms.invalid) {
      return this.submitted = true;
+    } else {
+      return this.notLogined = true;
     }
-    if (this.user.role == Role.admin) {
-      console.log(this.user.role) 
-      this.router.navigate(['/dashboard']);
-    }
-    else if (this.user.role == Role.user) {
-      console.log(this.user.role) 
-      this.router.navigate(['/tasks']);
-    }
+    // if (this.user.role == Role.admin) {
+    //   console.log(this.user.role) 
+    //   this.router.navigate(['/dashboard']);
+    // }
+    // else if (this.user.role == Role.user) {
+    //   console.log(this.user.role) 
+    //   this.router.navigate(['/tasks']);
+    // }
+    
   }
 
 }

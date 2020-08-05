@@ -11,12 +11,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../environments/environment.prod'
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { UserService } from './services/user.service';
-
-
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TasksComponent } from './components/tasks/tasks.component';
-// import {MatButtonModule} from '@angular/material/button';
+import { AuthService } from './services/auth.service';
+
 
 @NgModule({
   declarations: [
@@ -35,9 +35,10 @@ import { TasksComponent } from './components/tasks/tasks.component';
     BrowserAnimationsModule,
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebase, 'practise-tasks'),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
-  providers: [UserService],
+  providers: [UserService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
