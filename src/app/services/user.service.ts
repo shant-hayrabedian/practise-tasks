@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestoreCollection, AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs'
 import { User} from 'src/app/models/User'
 
@@ -18,7 +18,4 @@ export class UserService {
     this.usersCollection.add(user);
    }
 
-   getUsers() {
-      return this.users
-   }
 }

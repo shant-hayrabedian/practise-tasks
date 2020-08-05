@@ -21,7 +21,6 @@ export class RegisterPageComponent implements OnInit {
     password: '',
     role: Role.user
   };
-  
 
   constructor(private userService: UserService, private authService: AuthService) { }
 
@@ -31,7 +30,7 @@ export class RegisterPageComponent implements OnInit {
 
   register() {
     this.authService.doRegister(this.user);
-    if(this.user.firstName != '' && this.user.lastName != '' && this.user.email != '' && this.user.password != '') {
+    if(this.user.firstName !== '' && this.user.lastName !== '' && this.user.email !== '' && this.user.password !== '') {
       this.userService.addUser(this.user);
       this.registered = true;
       this.user.firstName = '';
@@ -57,13 +56,13 @@ export class RegisterPageComponent implements OnInit {
         Validators.required, Validators.minLength(3), Validators.maxLength(30),
       ]),
       email: new FormControl(null, [
-        Validators.required, Validators.minLength(6), Validators.maxLength(20),
+        Validators.required, Validators.email, Validators.minLength(6), Validators.maxLength(20),
       ]),
       password: new FormControl(null, [
         Validators.required, Validators.minLength(6), Validators.maxLength(10),
       ]),
       role: new FormControl(),
-    })
+    });
   }
 
 }

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFireAuth} from '@angular/fire/auth';
-import { AngularFirestore } from 'angularfire2/firestore';
+import {AngularFirestore} from 'angularfire2/firestore';
 import {Observable, of} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {User} from 'src/app/models/User';
@@ -27,14 +27,14 @@ export class AuthService {
     }
 
     async login(email, password) {
-        const provider = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
+        await this.afAuth.auth.signInWithEmailAndPassword(email, password);
         this.router.navigate(['/tasks']);
     }
 
     doRegister(value) {
         this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password).then(cred => {
-            return this.db.collection('users').doc(cred.user.uid)
-        })
+            return this.db.collection('users').doc(cred.user.uid);
+        });
     }
 
 
