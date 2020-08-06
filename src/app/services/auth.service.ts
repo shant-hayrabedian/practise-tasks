@@ -4,7 +4,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {Observable, of} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
-import {User} from 'src/app/models/User';
+import {User, Role} from 'src/app/models/User';
 
 @Injectable({
     providedIn: 'root'
@@ -28,7 +28,14 @@ export class AuthService {
 
     async login(email, password) {
         await this.afAuth.auth.signInWithEmailAndPassword(email, password);
-        this.router.navigate(['/tasks']);
+        console.log(email,password)
+        this.router.navigate(['/dashboard']);
+
+        if(email && password == Role.user) {
+            this.router.navigate(['/tasks']);
+        } else if(email && password == Role.admin) {
+            this.router.navigate(['/dashboard']);
+        }
     }
 
     doRegister(value) {
