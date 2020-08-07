@@ -28,14 +28,13 @@ export class AuthService {
 
     async login(email, password) {
         await this.afAuth.auth.signInWithEmailAndPassword(email, password);
-        console.log(email,password)
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/tasks']);
 
-        if(email && password == Role.user) {
-            this.router.navigate(['/tasks']);
-        } else if(email && password == Role.admin) {
-            this.router.navigate(['/dashboard']);
-        }
+        // if(email && password == Role.user) {
+        //     this.router.navigate(['/tasks']);
+        // } else if(email && password == Role.admin) {
+        //     this.router.navigate(['/dashboard']);
+        // }
     }
 
     doRegister(value) {
