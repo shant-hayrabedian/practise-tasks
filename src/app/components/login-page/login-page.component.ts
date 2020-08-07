@@ -18,7 +18,7 @@ export class LoginPageComponent implements OnInit {
     user: User = {
         email: '',
         password: '',
-        role: Role.admin || Role.user
+        role: Role.admin && Role.user
     };
 
     constructor(private userService: UserService,
@@ -50,7 +50,8 @@ export class LoginPageComponent implements OnInit {
         this.authService.login(this.user.email, this.user.password);
         if (this.loginForms.invalid) {
             return this.submitted = true;
-        } else {
+        } 
+        else {
             return this.notLogined = true;
         }
         //  else if(this.user.role == Role.admin) {
@@ -58,6 +59,7 @@ export class LoginPageComponent implements OnInit {
         //     return this.notLogined = true;
         // } else if (this.user.role == Role.user) {
         //       this.router.navigate(['/tasks']);
+        //       return this.notLogined = true;
         // }
     }
 

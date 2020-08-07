@@ -10,7 +10,8 @@ import {User, Role} from 'src/app/models/User';
     providedIn: 'root'
 })
 export class AuthService {
-    users: Observable<User>;
+    users: Observable<User[]>;
+    role: Role
 
     constructor(public afAuth: AngularFireAuth,
                 public db: AngularFirestore,
@@ -27,14 +28,34 @@ export class AuthService {
     }
 
     async login(email, password) {
-        await this.afAuth.auth.signInWithEmailAndPassword(email, password);
-        this.router.navigate(['/tasks']);
-
-        // if(email && password == Role.user) {
-        //     this.router.navigate(['/tasks']);
-        // } else if(email && password == Role.admin) {
+        await this.afAuth.auth.signInWithEmailAndPassword(email, password)
+            .then(() => {
+                if (this.db.collection<User>('users').ref.where('role', '==', Role.admin)) {
+                    console.log(Role.admin)
+                    this.router.navigate(['/dashboard']);
+                } else if (this.db.collection<User>('users').ref.where('role', '==', Role.user)) {
+                    console.log(Role.user)
+                    this.router.navigate(['/tasks']);
+                }
+            });
+        // if(this.db.collection<User>('users').doc('role').get()){
+        //     // .ref.where('role', '==', Role.admin).get()) {
+        //             console.log(Role.admin)
+        //             this.router.navigate(['/dashboard']);
+        //     }
+        //      else if(this.db.collection<User>('users').doc('role').get()) {
+        //         console.log(Role.user)
+        //         this.router.navigate(['/tasks']);
+        //     }
+        /////   
+        // if(this.db.collection<User>('users').ref.where('role', '==', Role.admin)) {
+        //     console.log(Role.admin)
         //     this.router.navigate(['/dashboard']);
+        // } else if(this.db.collection<User>('users').ref.where('role', '==', Role.user)) {
+        //     console.log(Role.user)
+        //     this.router.navigate(['/tasks']);
         // }
+
     }
 
     doRegister(value) {
