@@ -31,10 +31,10 @@ export class AuthService {
         await this.afAuth.auth.signInWithEmailAndPassword(email, password)
             .then(() => {
                 if (this.db.collection<User>('users').ref.where('role', '==', Role.admin)) {
-                    console.log(Role.admin)
+                    console.log(Role.admin);
                     this.router.navigate(['/dashboard']);
                 } else if (this.db.collection<User>('users').ref.where('role', '==', Role.user)) {
-                    console.log(Role.user)
+                    console.log(Role.user);
                     this.router.navigate(['/tasks']);
                 }
             });
