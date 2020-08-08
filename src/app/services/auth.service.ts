@@ -11,7 +11,7 @@ import {User, Role} from 'src/app/models/User';
 })
 export class AuthService {
     users: Observable<User[]>;
-    role: Role
+    role: Role;
 
     constructor(public afAuth: AngularFireAuth,
                 public db: AngularFirestore,
@@ -31,13 +31,16 @@ export class AuthService {
         await this.afAuth.auth.signInWithEmailAndPassword(email, password)
             .then(() => {
                 if (this.db.collection<User>('users').ref.where('role', '==', Role.admin)) {
-                    console.log(Role.admin);
-                    this.router.navigate(['/dashboard']);
+                    console.log(Role.admin)
+                    return this.router.navigate(['/dashboard']);
                 } else if (this.db.collection<User>('users').ref.where('role', '==', Role.user)) {
-                    console.log(Role.user);
-                    this.router.navigate(['/tasks']);
+                    console.log(Role.user)
+                    return this.router.navigate(['/tasks']);
                 }
+            }).catch((error)=> {
+                alert(error + ' Something Error Please Try again');
             });
+  
         // if(this.db.collection<User>('users').doc('role').get()){
         //     // .ref.where('role', '==', Role.admin).get()) {
         //             console.log(Role.admin)
@@ -59,9 +62,17 @@ export class AuthService {
     }
 
     doRegister(value) {
-        this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password).then(cred => {
-            return this.db.collection('users').doc(cred.user.uid);
+       return this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password).then(cred => {
+            this.db.collection('users').doc(cred.user.uid);
+            alert(' You Have Been Successfully Registered');
+        }).catch((error)=> {
+            alert(error + ' Something Error Please Try again');
         });
+    }
+
+    signOutUser() {
+        this.afAuth.auth.signOut().then(() => {
+        this.router.navigate(['/login']); });
     }
 
 
