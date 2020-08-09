@@ -16,6 +16,7 @@ import { UserService } from './services/user.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './auth/guard.guard';
 
 
 @NgModule({
@@ -36,9 +37,9 @@ import { AuthService } from './services/auth.service';
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebase, 'practise-tasks'),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
-  providers: [UserService, AuthService],
+  providers: [UserService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
