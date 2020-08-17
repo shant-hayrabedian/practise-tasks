@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../environments/environment.prod'
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { UserService } from './services/user.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -38,6 +39,7 @@ import { AuthGuard } from './auth/guard.guard';
     AngularFireModule.initializeApp(environment.firebase, 'practise-tasks'),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   providers: [UserService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
