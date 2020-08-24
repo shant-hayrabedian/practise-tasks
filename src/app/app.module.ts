@@ -17,6 +17,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth/guard.guard';
+import {TaskService} from './services/task.service';
+import { AddTaskComponent } from './components/add-task/add-task.component';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { AuthGuard } from './auth/guard.guard';
     LoginPageComponent,
     RegisterPageComponent,
     DashboardComponent,
-    TasksComponent
+    TasksComponent,
+    AddTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import { AuthGuard } from './auth/guard.guard';
     AngularFirestoreModule,
     AngularFireAuthModule,
   ],
-  providers: [UserService, AuthService, AuthGuard],
+  providers: [UserService, AuthService, AuthGuard, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

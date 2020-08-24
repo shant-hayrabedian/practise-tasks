@@ -6,9 +6,10 @@
         <div class="container">
             <form class="example-form" [formGroup]="loginForms" (ngSubmit)="login()">
                 <mat-form-field class="example-full-width">
-                    <mat-label>Email:</mat-label><br>
-                    <input matInput type="email" placeholder="Put Your Email Please" required 
-                    [(ngModel)]= "user.email" formControlName="email">
+                    <mat-label>Email:</mat-label>
+                    <br>
+                    <input matInput type="email" placeholder="Put Your Email Please" required
+                           [(ngModel)]="user.email" formControlName="email">
                 </mat-form-field>
                 <!-- Validators -->
                 <div *ngIf="submitted && f.email.invalid" class="form-error">
@@ -24,9 +25,10 @@
                 </div>
                 <br>
                 <mat-form-field class="example-full-width">
-                    <mat-label>Password:</mat-label><br>
+                    <mat-label>Password:</mat-label>
+                    <br>
                     <input matInput type="password" placeholder="Put Your Password Please" required
-                    [(ngModel)]= "user.password" formControlName="password">
+                           [(ngModel)]="user.password" formControlName="password">
                 </mat-form-field>
                 <!-- Validators -->
                 <div *ngIf="submitted && f.password.invalid" class="form-error">
@@ -44,9 +46,10 @@
                 <input type="submit" class="mdc-fab mdc-fab--extended"><br><br>
                 <div *ngIf="notLogined" class="alert alert-danger">
                     <p>
-                       Invalid Email Or Password Please try Again! 
+                        Invalid Email Or Password Please try Again!
                     </p>
                 </div>
             </form>
         </div>
     </div>
+</div>

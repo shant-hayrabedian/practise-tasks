@@ -1,20 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from 'src/app/services/auth.service';
+import {TaskService} from '../../services/task.service';
+import {Task} from '../../models/Task';
 
 @Component({
-  selector: 'app-tasks',
-  templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.css']
+    selector: 'app-tasks',
+    templateUrl: './tasks.component.html',
+    styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
+    tasks: Task[];
+    editState = false;
+    taskEdit: Task;
 
-  constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService, private taskService: TaskService) {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+        this.taskService.getTaskList().subscribe(tasks => {
+            this.tasks = tasks;
+        });
+    }
 
-  signOutUser() {
-    this.authService.signOutUser();
-  }
+    deleteTask(event, task: Task) {
+        this.clearState();
+        this.taskService.deleteTask(task);
+    }
+
+    editTask(event, task: Task) {
+        this.editState = true;
+        this.taskEdit = task;
+    }
+
+    updateTask(task: Task) {
+        this.taskService.updateTask(task);
+    }
+
+    clearState() {
+        this.editState = false;
+        this.taskEdit = null;
+    }
+
+    signOutUser() {
+        this.authService.signOutUser();
+    }
 
 }

@@ -30,14 +30,14 @@ export class AuthService {
     async login(email, password) {
         await this.afAuth.auth.signInWithEmailAndPassword(email, password)
             .then(() => {
-                if (this.db.collection<User>('users').ref.where('role', '==', Role.admin)) {
-                    console.log(Role.admin)
-                    return this.router.navigate(['/dashboard']);
-                } else if (this.db.collection<User>('users').ref.where('role', '==', Role.user)) {
-                    console.log(Role.user)
+                if (this.db.collection<User>('users').ref.where('role', '==', Role.user)) {
+                    console.log(Role.user);
                     return this.router.navigate(['/tasks']);
+                } else if (this.db.collection<User>('users').ref.where('role', '==', Role.admin)) {
+                    console.log(Role.admin);
+                    return this.router.navigate(['/dashboard']);
                 }
-            }).catch((error)=> {
+            }).catch((error) => {
                 alert(error + ' Something Error Please Try again');
             });
   
@@ -65,7 +65,7 @@ export class AuthService {
        return this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password).then(cred => {
             this.db.collection('users').doc(cred.user.uid);
             alert(' You Have Been Successfully Registered');
-        }).catch((error)=> {
+        }).catch((error) => {
             alert(error + ' Something Error Please Try again');
         });
     }
