@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from 'src/app/services/auth.service';
 import {TaskService} from '../../services/task.service';
 import {Task} from '../../models/Task';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'app-tasks',
@@ -21,10 +22,17 @@ export class TasksComponent implements OnInit {
         // this.taskService.getTaskList().subscribe(tasks => {
         //     this.tasks = tasks;
         // });
-        this.taskService.getTaskList().valueChanges()
-            .subscribe(tasks => {
-                console.log(tasks);
-                this.taskss = tasks;
+        // this.taskService.getTaskList().valueChanges()
+        //     .subscribe(tasks => {
+        //         this.taskss = tasks;
+        // });
+        this.getTask();
+
+    }
+
+    getTask() {
+        this.taskService.getTaskList().subscribe(tasks => {
+            this.taskss = tasks;
         });
     }
 
