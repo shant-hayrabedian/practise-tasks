@@ -40,7 +40,7 @@ export class AuthService {
             }).catch((error) => {
                 alert(error + ' Something Error Please Try again');
             });
-  
+
         // if(this.db.collection<User>('users').doc('role').get()){
         //     // .ref.where('role', '==', Role.admin).get()) {
         //             console.log(Role.admin)
@@ -50,7 +50,7 @@ export class AuthService {
         //         console.log(Role.user)
         //         this.router.navigate(['/tasks']);
         //     }
-        /////   
+        /////
         // if(this.db.collection<User>('users').ref.where('role', '==', Role.admin)) {
         //     console.log(Role.admin)
         //     this.router.navigate(['/dashboard']);
@@ -63,8 +63,9 @@ export class AuthService {
 
     doRegister(value) {
        return this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password).then(cred => {
-            this.db.collection('users').doc(cred.user.uid);
-            alert(' You Have Been Successfully Registered');
+            this.db.collection('usersId').doc(cred.user.uid).set({
+               id: cred.user.uid
+           });
         }).catch((error) => {
             alert(error + ' Something Error Please Try again');
         });

@@ -8,8 +8,9 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { environment } from '../environments/environment.prod'
-import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment.prod';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { UserService } from './services/user.service';
@@ -41,6 +42,7 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
     AngularFireModule.initializeApp(environment.firebase, 'practise-tasks'),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   providers: [UserService, AuthService, AuthGuard, TaskService],
   bootstrap: [AppComponent]

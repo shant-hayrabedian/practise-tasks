@@ -8,7 +8,7 @@ import { User} from 'src/app/models/User'
 })
 export class UserService {
   usersCollection: AngularFirestoreCollection<User>;
-  users:Observable<User[]>;
+  users: Observable<User[]>;
 
   constructor(public db: AngularFirestore) {
     this.usersCollection = this.db.collection('users');
