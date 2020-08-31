@@ -20,6 +20,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth/guard.guard';
 import {TaskService} from './services/task.service';
 import { AddTaskComponent } from './components/add-task/add-task.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
     AngularFireModule.initializeApp(environment.firebase, 'practise-tasks'),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    DragDropModule
   ],
   providers: [UserService, AuthService, AuthGuard, TaskService],
   bootstrap: [AppComponent]

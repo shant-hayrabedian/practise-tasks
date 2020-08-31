@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from 'src/app/services/auth.service';
 import {TaskService} from '../../services/task.service';
 import {Task} from '../../models/Task';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
     selector: 'app-tasks',
@@ -47,6 +48,10 @@ export class TasksComponent implements OnInit {
 
     signOutUser() {
         this.authService.signOutUser();
+    }
+
+    drop(event: CdkDragDrop<string[]>) {
+        moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
     }
 
 }

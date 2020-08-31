@@ -50,8 +50,6 @@ export class LoginPageComponent implements OnInit {
         this.authService.login(this.user.email, this.user.password);
         if (this.loginForms.invalid) {
             return this.submitted = true;
-        } else {
-            return this.notLogined = true;
         }
         //  else if(this.user.role == Role.admin) {
         //     this.router.navigate(['/dashboard']);
