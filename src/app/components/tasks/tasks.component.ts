@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from 'src/app/services/auth.service';
 import {TaskService} from '../../services/task.service';
 import {Task} from '../../models/Task';
-import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'app-tasks',
@@ -10,49 +9,41 @@ import {map} from 'rxjs/operators';
     styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
-    tasks: Task[];
     editState = false;
     taskEdit: Task;
-    taskss: any;
+    tasks: any;
+    taskk: Task[];
 
     constructor(private authService: AuthService, private taskService: TaskService) {
     }
 
     ngOnInit(): void {
-        // this.taskService.getTaskList().subscribe(tasks => {
-        //     this.tasks = tasks;
-        // });
-        // this.taskService.getTaskList().valueChanges()
-        //     .subscribe(tasks => {
-        //         this.taskss = tasks;
-        // });
         this.getTask();
-
     }
 
     getTask() {
         this.taskService.getTaskList().subscribe(tasks => {
-            this.taskss = tasks;
+            this.tasks = tasks;
         });
     }
 
-    deleteTask(event, task: Task) {
+    deleteTask() {
         this.clearState();
-        this.taskService.deleteTask(task);
+        this.taskService.deleteTask(this.tasks[0].id);
     }
 
-    editTask(event, task: Task) {
+    editTask(event, task) {
         this.editState = true;
-        this.taskEdit = task;
+        this.tasks.key = task;
     }
 
     updateTask(task: Task) {
-        this.taskService.updateTask(task);
+        this.taskService.updateTask(this.tasks);
     }
 
     clearState() {
         this.editState = false;
-        this.taskEdit = null;
+        this.tasks.key = null;
     }
 
     signOutUser() {

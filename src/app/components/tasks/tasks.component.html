@@ -1,12 +1,12 @@
 <div class="container">
     <app-add-task></app-add-task>
-    <ul *ngFor="let task of taskss" class="collection">
+    <ul *ngFor="let task of tasks" class="collection">
         <li class="collection-item">{{task.title}}
             <a class="secondary-content">
                 <i (click)="editTask($event, task)" class="fa fa-pencil"></i>
-                <i *ngIf="editState && taskEdit.id == task.id" (click)="clearState()" class="fa fa-compress"></i>
+                <i *ngIf="editState && tasks.key == task" (click)="clearState()" class="fa fa-compress"></i>
             </a>
-            <div *ngIf="editState && taskEdit.id == task.id">
+            <div *ngIf="editState && tasks.key == task">
                 <form (ngSubmit)="updateTask(task)">
                     <div class="row">
                         <div class="input-field col s6">
@@ -15,7 +15,7 @@
                         <br>
                     </div>
                     <input type="submit" value="Update" class="btn orange">
-                    <button (click)="deleteTask($event, task)" class="btn red" style="margin-left: 10px">Delete</button>
+                    <button (click)="deleteTask()" class="btn red" style="margin-left: 10px">Delete</button>
                 </form>
             </div>
         </li>

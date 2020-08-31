@@ -66,6 +66,7 @@ export class AuthService {
             this.db.collection('usersId').doc(cred.user.uid).set({
                id: cred.user.uid
            });
+            alert(' You Have Been Successfully Registered');
         }).catch((error) => {
             alert(error + ' Something Error Please Try again');
         });
