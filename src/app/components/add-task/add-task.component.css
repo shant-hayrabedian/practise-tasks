@@ -1,2 +1,10 @@
 @import "../../../../node_modules/materialize-css/dist/css/materialize.css";
 @import "../../../../node_modules/font-awesome/css/font-awesome.min.css";
+
+/*.card {*/
+/*    position: relative;*/
+/*    margin: 0.5rem 650px 1rem -187px;*/
+/*    background-color: #fff;*/
+/*    transition: box-shadow .25s;*/
+/*    border-radius: 2px;*/
+/*}*/

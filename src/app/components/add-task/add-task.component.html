@@ -3,8 +3,8 @@
         <span class="card-title">Todo List</span>
         <form (ngSubmit)="onSubmit()" class="col s6">
             <div class="row">
-                <div class="input-field col s6">
-                    <input type="text" placeholder="Add Title" [(ngModel)]="task.title" name="title">
+                <div class="input-field">
+                    <input type="text" placeholder="Add Card" [(ngModel)]="task.title" name="title">
                     <input type="submit" value="Add" class="btn">
                 </div>
             </div>

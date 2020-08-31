@@ -9,7 +9,7 @@
             <div *ngIf="editState && tasks.key == task">
                 <form (ngSubmit)="updateTask(task)">
                     <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col-sm-6">
                             <input type="text" placeholder="Add Title" [(ngModel)]="task.title" name="title">
                         </div>
                         <br>

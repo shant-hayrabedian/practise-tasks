@@ -12,7 +12,6 @@ export class TasksComponent implements OnInit {
     editState = false;
     taskEdit: Task;
     tasks: any;
-    taskk: Task[];
 
     constructor(private authService: AuthService, private taskService: TaskService) {
     }
@@ -38,7 +37,7 @@ export class TasksComponent implements OnInit {
     }
 
     updateTask(task: Task) {
-        this.taskService.updateTask(this.tasks);
+        this.taskService.updateTask(this.taskEdit.key, { title: task.title });
     }
 
     clearState() {
